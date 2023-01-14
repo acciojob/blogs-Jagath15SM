@@ -57,12 +57,13 @@ public class BlogService {
         Image image;
         try {
             image = imageRepository.findById(blogId).get();
-            image.setDescription(description);
-            image.setDimensions(dimensions);
         }
         catch (Exception e){
             image = new Image();
+            image.setId(1);
         }
+        image.setDescription(description);
+        image.setDimensions(dimensions);
 
         imageRepository.save(image);
 
