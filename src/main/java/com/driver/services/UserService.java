@@ -20,15 +20,15 @@ public class UserService {
     }
 
     public void updateUser(User user){
-        int userID = user.getId();
-        User user1 = userRepository3.findById(userID).get();
-        user1.setBlogList(user.getBlogList());
-        user1.setUsername(user.getUsername());
-        user1.setPassword(user.getPassword());
-        user1.setFirstName(user.getFirstName());
-        user1.setLastName(user.getLastName());
+//        int userID = user.getId();
+//        User user1 = userRepository3.findById(userID).get();
+//        user1.setBlogList(user.getBlogList());
+//        user1.setUsername(user.getUsername());
+//        user1.setPassword(user.getPassword());
+//        user1.setFirstName(user.getFirstName());
+//        user1.setLastName(user.getLastName());
 
-        userRepository3.save(user1);
+        userRepository3.save(user);
     }
 
     public User findUserByUsername(String username){

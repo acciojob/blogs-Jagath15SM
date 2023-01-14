@@ -28,7 +28,7 @@ public class BlogService {
 
     public List<Blog> showBlogs(){
         List<Blog> blogs = blogRepository1.findAll();
-        return new ArrayList<>();
+        return blogs;
     }
 
     public void createAndReturnBlog(Integer userId, String title, String content) {
