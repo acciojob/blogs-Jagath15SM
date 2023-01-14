@@ -58,7 +58,7 @@ public class BlogService {
         try {
             image = imageRepository.findById(blogId).get();
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             image = new Image();
             image.setId(blogId);
         }
