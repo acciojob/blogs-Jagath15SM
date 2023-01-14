@@ -60,7 +60,6 @@ public class BlogService {
         }
         catch (Exception e){
             image = new Image();
-            image.setId(blogId);
         }
 
         image.setDescription(description);
