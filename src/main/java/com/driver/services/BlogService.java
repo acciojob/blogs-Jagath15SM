@@ -60,9 +60,9 @@ public class BlogService {
         }
         catch (NoSuchElementException e){
             image = new Image();
+            image.setId(blogId);
         }
 
-        image.setId(blogId);
         image.setDescription(description);
         image.setDimensions(dimensions);
 
