@@ -14,31 +14,29 @@ public class BlogController {
     @Autowired
     BlogService blogService;
 
-    @Autowired
-    BlogRepository blogRepository;
-
-    @GetMapping
+    @GetMapping("/get-all-blogs")
     public ResponseEntity<Integer> getAllBlogs() {
-        int countOfBlogs = blogRepository.findAll().size();
+        int countOfBlogs = blogService.showBlogs().size();
         return new ResponseEntity<>(countOfBlogs, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity createBlog(@RequestParam Integer userId ,
-                                           @RequestParam String title,
-                                           @RequestParam String content) {
+    @PostMapping("/create-blog")
+    public ResponseEntity createBlog(@RequestParam("userId") Integer userId ,
+                                           @RequestParam("title") String title,
+                                           @RequestParam("content") String content) {
         blogService.createAndReturnBlog(userId, title, content);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{blogId}/add-image")
-    public ResponseEntity<String> addImage(@PathVariable int blogId, @RequestParam String description, @RequestParam String dimensions) {
+    public ResponseEntity<String> addImage(@PathVariable("blogId") int blogId,
+                                           @RequestParam("description") String description, @RequestParam("dimensions") String dimensions) {
         blogService.addImage(blogId, description,dimensions);
         return new ResponseEntity<>("Added image successfully", HttpStatus.OK);
     }
 
     @DeleteMapping("/{blogId}")
-    public ResponseEntity<Void> deleteBlog(@PathVariable int blogId) {
+    public ResponseEntity<Void> deleteBlog(@PathVariable("blogId") int blogId) {
         blogService.deleteBlog(blogId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

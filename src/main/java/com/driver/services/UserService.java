@@ -10,8 +10,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository3;
 
-    @Autowired
-    BlogService blogService3;
 
     public void createUser(User user){
         userRepository3.save(user);
@@ -22,7 +20,15 @@ public class UserService {
     }
 
     public void updateUser(User user){
-        userRepository3.save(user);
+        int userID = user.getId();
+        User user1 = userRepository3.findById(userID).get();
+        user1.setBlogList(user.getBlogList());
+        user1.setUsername(user.getUsername());
+        user1.setPassword(user.getPassword());
+        user1.setFirstName(user.getFirstName());
+        user1.setLastName(user.getLastName());
+
+        userRepository3.save(user1);
     }
 
     public User findUserByUsername(String username){

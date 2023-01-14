@@ -27,7 +27,7 @@ public class BlogService {
     UserRepository userRepository1;
 
     public List<Blog> showBlogs(){
-        //find all blogs
+        List<Blog> blogs = blogRepository1.findAll();
         return new ArrayList<>();
     }
 
