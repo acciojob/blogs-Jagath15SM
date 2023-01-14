@@ -70,6 +70,11 @@ public class BlogService {
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
         Blog blog = blogRepository1.findById(blogId).get();
+
+        List<Image> images = blog.getImageList();
+        for(Image image : images){
+            imageRepository.deleteById(image.getId());
+        }
         blog.getImageList().clear();
 
         blogRepository1.deleteById(blogId);

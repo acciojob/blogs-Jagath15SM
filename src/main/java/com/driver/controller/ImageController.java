@@ -16,9 +16,6 @@ public class ImageController {
     @Autowired
     ImageService imageService;
 
-    @Autowired
-    ImageRepository imageRepository;
-
     @PostMapping("/create")
     public ResponseEntity<Image> createAndReturn(@RequestBody() Blog blog,
                                                  @RequestParam("description") String description,
