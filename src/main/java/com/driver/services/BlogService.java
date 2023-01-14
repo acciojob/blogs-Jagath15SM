@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BlogService {
@@ -53,10 +54,14 @@ public class BlogService {
 
     public void addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog after creating it
-        Image image = imageRepository.findById(blogId).get();
-        if(image == null){
+        Image image;
+        try {
+            image = imageRepository.findById(blogId).get();
+        }
+        catch (NoSuchElementException e){
             image = new Image();
         }
+
         image.setId(blogId);
         image.setDescription(description);
         image.setDimensions(dimensions);
