@@ -54,6 +54,10 @@ public class BlogService {
     public void addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog after creating it
         Image image = imageRepository.findById(blogId).get();
+        if(image == null){
+            image = new Image();
+        }
+        image.setId(blogId);
         image.setDescription(description);
         image.setDimensions(dimensions);
 
