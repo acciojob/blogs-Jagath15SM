@@ -54,22 +54,30 @@ public class BlogService {
 
     public void addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog after creating it
-        Image image;
+
         try {
-            image = imageRepository.findById(blogId).get();
-        }
-        catch (Exception e){
-            image = new Image();
-            image.setId(1);
-        }
-        image.setDescription(description);
-        image.setDimensions(dimensions);
+            Image image = imageRepository.findById(blogId).get();
+            image.setDescription(description);
+            image.setDimensions(dimensions);
 
-        imageRepository.save(image);
+            imageRepository.save(image);
 
-        Blog blog = blogRepository1.findById(blogId).get();
-        blog.getImageList().add(image);
-        blogRepository1.save(blog);
+
+            Blog blog = blogRepository1.findById(blogId).get();
+            blog.getImageList().add(image);
+            blogRepository1.save(blog);
+        }catch (NoSuchElementException e){
+            Image image = new Image();
+            image.setDescription(description);
+            image.setDimensions(dimensions);
+
+            imageRepository.save(image);
+
+
+            Blog blog = blogRepository1.findById(blogId).get();
+            blog.getImageList().add(image);
+            blogRepository1.save(blog);
+        }
 
     }
 
