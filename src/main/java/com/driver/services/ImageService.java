@@ -62,7 +62,7 @@ public class ImageService {
         int d1 = Integer.valueOf(d[0]), d2 = Integer.valueOf(d[1]);
         int r1 = Integer.valueOf(r[0]), r2 = Integer.valueOf(r[1]);
 
-        int result = (int) ((r1 * r2) / (d1 * d2));
+        int result = (int) ((r1 / d1) * (r2 / d2));
 
         return result;
     }
