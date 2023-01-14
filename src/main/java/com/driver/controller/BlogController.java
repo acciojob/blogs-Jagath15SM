@@ -1,6 +1,5 @@
 package com.driver.controller;
 
-import com.driver.models.*;
 import com.driver.repositories.BlogRepository;
 import com.driver.services.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;

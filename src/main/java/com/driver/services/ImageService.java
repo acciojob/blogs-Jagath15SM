@@ -1,6 +1,7 @@
 package com.driver.services;
 
-import com.driver.models.*;
+import com.driver.models.Blog;
+import com.driver.models.Image;
 import com.driver.repositories.BlogRepository;
 import com.driver.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
