@@ -61,12 +61,9 @@ public class BlogService {
         image.setDimensions(dimensions);
         Blog blog = blogRepository1.findById(blogId).get();
         image.setBlog(blog);
-        imageRepository.save(image);
+        blog.getImageList().add(image);
+        blogRepository1.save(blog);
 
-
-
-//        blog.getImageList().add(image);
-//        blogRepository1.save(blog);
 
     }
 
